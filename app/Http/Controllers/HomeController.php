@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\dress;
 
 class HomeController extends Controller
 {
@@ -11,7 +12,12 @@ class HomeController extends Controller
     }
 
     public function shop(){
-        return view('shop');
+        $dresses = dress::all();
+
+        $data = [
+            'dresses' => $dresses
+        ];
+        return view('shop', $data);
     }
 
     public function contatti(){
